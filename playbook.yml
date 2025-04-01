@@ -1,0 +1,9 @@
+- hosts: dbservers
+  tasks:
+    - name: Install PostreSQL
+      become: true
+      apt:
+        update_cache: yes
+        name: postgresql-16
+        state: present
+        
