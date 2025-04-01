@@ -1,9 +1,23 @@
+---
+
 - hosts: dbservers
   tasks:
-    - name: Install PostreSQL
+    - name: Install PostreSQL and other libs
       become: true
       apt:
         update_cache: yes
-        name: postgresql-16
+        name: 
+          - postgresql-16
+          - python3-psycopg2
         state: present
-        
+        # here: https://docs.ansible.com/ansible/latest/collections/community/postgresql/postgresql_pg_hba_module.html#ansible-collections-community-postgresql-postgresql-pg-hba-module
+        # add or replace line  
+        # local   all             postgres                                md5
+        # or whatever we did in prev class
+    - name: Ping PostreSQL
+      community.postgresql.postgresql_ping:
+        db: postgres
+        login_user: postgres
+        login_password: postgres
+      register: result
+      failed_when: not result.is_available
