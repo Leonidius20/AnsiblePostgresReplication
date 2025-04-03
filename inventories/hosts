@@ -1,3 +1,3 @@
 [dbservers]
-db-master ansible_host=ubuntu@34.215.2.55 
-db-replica ansible_host=ubuntu@44.243.104.55
+db-master ansible_host=root@localhost ansible_port=2222
+db-replica ansible_host=root@localhost ansible_port=2223

@@ -14,10 +14,4 @@
         # add or replace line  
         # local   all             postgres                                md5
         # or whatever we did in prev class
-    - name: Ping PostreSQL
-      community.postgresql.postgresql_ping:
-        db: postgres
-        login_user: postgres
-        login_password: postgres
-      register: result
-      failed_when: not result.is_available
+    
